@@ -61,11 +61,17 @@ public class InfixEvaluation {
 			}
 		}
 			
-		// print results
+		// combine expressions with their result
+		LinkedStack<String> expressionsWithResult = new LinkedStack<>();
 		while (!expressions.isEmpty() && !operands.isEmpty()) {
 			String exp = expressions.pop();
 			int res = operands.pop();
-			System.out.println("The value of " + exp + " is " + res);
+			expressionsWithResult.push("The value of " + exp + " is " + res); // push expression w/ result onto new stack
+		}
+		
+		// print expressions along with results in the order they appear in the file
+		while (!expressionsWithResult.isEmpty()) {
+			System.out.println(expressionsWithResult.pop());
 		}
 	}
 	
